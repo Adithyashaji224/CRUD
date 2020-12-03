@@ -1,0 +1,62 @@
+﻿@model CoreMvcCrud.Models.Student
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddStudent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <input type="hidden" asp-for="id" />
+                <label asp-for="fname" class="control-label"></label>
+                <input asp-for="fname" class="form-control" />
+                <span asp-validation-for="fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lname" class="control-label"></label>
+                <input asp-for="lname" class="form-control" />
+                <span asp-validation-for="lname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mobile" class="control-label"></label>
+                <input asp-for="mobile" class="form-control" />
+                <span asp-validation-for="mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="department" class="control-label"></label>
+                <select asp-for="deptid" class="form-control" asp-items="@(new SelectList(ViewBag.Deplist,"deptid","department"))">
+
+                </select>
+            </div>
+             <div class="form-group">
+                    <label asp-for="description" class="control-label"></label>
+                    <input asp-for="description" class="form-control" />
+                    <span asp-validation-for="description" class="text-danger"></span>
+                </div>
+
+
+             <div class="form-group">
+                 <input type="submit" value="Save" class="btn btn-primary" />
+                 <a asp-action="StudentList" class="btn btn-outline-primary">Student List</a>
+             </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
